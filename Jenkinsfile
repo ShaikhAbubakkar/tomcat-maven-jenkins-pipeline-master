@@ -10,7 +10,8 @@ pipeline {
     stages {
         stage("Git Checkout") {
             steps {
-                git credentialsId: 'github', url: 'https://github.com/ShaikhAbubakkar/tomcat-maven-jenkins-pipeline-master.git'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/ShaikhAbubakkar/tomcat-maven-jenkins-pipeline-master.git'
+
             }
         }
         stage("Maven Build") {
