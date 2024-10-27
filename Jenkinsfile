@@ -4,7 +4,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.x'
+        maven 'Maven 3.x' // Confirm this name matches your Maven tool configuration
     }
 
     stages {
@@ -23,11 +23,11 @@ pipeline {
             steps {
                 sshagent(['tomcat-new']) {
                     bat """
-                        pscp -scp -i path\\to\\privatekey.ppk -batch webapp\\target\\myweb.war centos@54.224.40.223:/opt/apache-tomcat-9.0.80/webapps
+                        pscp -scp -i C:\\path\\to\\privatekey.ppk -batch webapp\\target\\myweb.war centos@54.224.40.223:/opt/apache-tomcat-9.0.80/webapps
 
-                        plink -i path\\to\\privatekey.ppk -batch centos@54.224.40.223 /opt/apache-tomcat-9.0.80/bin/shutdown.sh
+                        plink -i C:\\path\\to\\privatekey.ppk -batch centos@54.224.40.223 /opt/apache-tomcat-9.0.80/bin/shutdown.sh
                         
-                        plink -i path\\to\\privatekey.ppk -batch centos@54.224.40.223 /opt/apache-tomcat-9.0.80/bin/startup.sh
+                        plink -i C:\\path\\to\\privatekey.ppk -batch centos@54.224.40.223 /opt/apache-tomcat-9.0.80/bin/startup.sh
                     """
                 }
             }
